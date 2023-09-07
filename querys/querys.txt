@@ -1,0 +1,47 @@
+1 - SELECT * FROM "default"."smartphones" limit 10;
+2 - SELECT brand_name, SUM(rating) AS rating_brand
+FROM smartphones
+GROUP BY brand_name;
+3 - SELECT brand_name, SUM(rating) AS rating_brand
+FROM smartphones
+GROUP BY brand_name
+ORDER BY rating_brand ASC;
+4 - SELECT brand_name, AVG(rating) AS avg_rating
+FROM smartphones
+GROUP BY brand_name
+ORDER BY avg_rating DESC;
+5 - SELECT brand_name, COUNT(*) AS num_5g_devices
+FROM smartphones
+WHERE has_5g = true
+GROUP BY brand_name
+ORDER BY num_5g_devices DESC;
+6 - SELECT brand_name, AVG(ram_capacity) AS avg_ram, AVG(internal_memory) AS avg_internal_memory
+FROM smartphones
+GROUP BY brand_name
+ORDER BY avg_ram DESC, avg_internal_memory DESC;
+7 - SELECT brand_name, AVG(rating) AS avg_rating, COUNT(*) AS num_5g_devices
+FROM smartphones
+WHERE has_5g = true
+GROUP BY brand_name
+HAVING COUNT(*) >= 5
+ORDER BY avg_rating DESC;
+8 - SELECT brand_name, model, battery_capacity, fast_charging
+FROM smartphones
+WHERE battery_capacity >= 4000 AND fast_charging_available = 1
+ORDER BY battery_capacity DESC;
+9 - SELECT brand_name, model, num_rear_cameras, num_front_cameras
+FROM smartphones
+WHERE num_rear_cameras > 1 AND num_front_cameras > 1
+ORDER BY brand_name, model;
+10 - SELECT processor_brand, brand_name, COUNT(*) AS num_qualcomm_devices
+FROM smartphones
+WHERE processor_brand = 'snapdragon'
+GROUP BY processor_brand, brand_name
+HAVING COUNT(*) >= 5
+ORDER BY num_qualcomm_devices DESC;
+11 - SELECT brand_name, model, processor_speed
+FROM smartphones
+ORDER BY processor_speed DESC;
+12 - SELECT brand_name, model, resolution_width, resolution_height
+FROM smartphones
+ORDER BY resolution_width DESC, resolution_height DESC;
